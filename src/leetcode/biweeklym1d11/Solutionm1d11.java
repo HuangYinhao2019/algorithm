@@ -1,5 +1,10 @@
 package leetcode.biweeklym1d11;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 class TreeNode {
     int val;
     TreeNode left;
@@ -10,8 +15,16 @@ class TreeNode {
 public class Solutionm1d11 {
 
     public int[] decompressRLElist(int[] nums) {
-        return new int[]{1};
+        List<Integer> ans = new ArrayList<>();
+        for (int i = 0; i < nums.length / 2; i++) {
+            for (int j = 0; j < nums[i * 2]; j++) {
+                ans.add(nums[i * 2 + 1]);
+            }
+        }
+
+        return ans.stream().mapToInt(Integer::intValue).toArray();
     }
+
     public int[][] matrixBlockSum(int[][] mat, int K) {
         int [][]t = new int[mat.length][mat[0].length];
         for (int i = 0; i < mat.length; i++) {
@@ -47,6 +60,7 @@ public class Solutionm1d11 {
         if (root.right != null) ans += calculateson(root.right, root.val % 2 == 0);
         return ans;
     }
+
     public int calculateson(TreeNode root, boolean odd){
         int res = 0;
         if (root.left == null && root.right == null){
@@ -69,6 +83,18 @@ public class Solutionm1d11 {
             }
         }
         return res;
+    }
+
+    public int distinctEchoSubstrings(String text) {
+        Set<String> set = new HashSet<>();
+        for (int i = 1; i <= text.length() / 2; i++) {   //i is length
+            for (int j = i; j <= text.length() - i; j++) {  // j is mid
+                if (text.substring(j, j + i).equals(text.substring(j - i, j))) {
+                    set.add(text.substring(j, j + i));
+                }
+            }
+        }
+        return set.size();
     }
 
     public static void main(String[] args){
