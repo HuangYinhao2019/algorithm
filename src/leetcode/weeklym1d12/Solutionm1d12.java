@@ -1,5 +1,7 @@
 package leetcode.weeklym1d12;
 
+import java.util.Arrays;
+
 public class Solutionm1d12 {
     public int[] getNoZeroIntegers(int n) {
         int []ans = new int[]{1,n-1};
@@ -67,12 +69,45 @@ public class Solutionm1d12 {
         return ans;
     }
 
+    public int minimumDistance(String word) {
+        int [][][]arr = new int [301][26][26];
+        int ans = Integer.MAX_VALUE;
+        for (int i = 1; i < 301; i++) {
+            for (int j = 0; j < 26; j++) {
+                Arrays.fill(arr[i][j],Integer.MAX_VALUE);
+            }
+        }
+        for (int i = 0; i < word.length(); i++) {
+            int le = word.charAt(i) - 'A';
+            for (int j = 0; j < 26; j++) {
+                for (int k = 0; k < 26; k++) {
+                    if (arr[i][j][k] != Integer.MAX_VALUE){
+                        arr[i+1][le][k] = Math.min(arr[i+1][le][k], arr[i][j][k] + move(j,le));
+                        arr[i+1][j][le] = Math.min(arr[i+1][j][le], arr[i][j][k] + move(k,le));
+                    }
+                }
+            }
+            if (i == word.length() - 1){
+                for (int j = 0; j < 26; j++) {
+                    ans = Math.min(arr[i+1][le][j],ans);
+                    ans = Math.min(arr[i+1][j][le],ans);
+                }
+            }
+        }
+        return ans;
+    }
+
+    public int move(int a,int b){
+        int x1 = a / 6,y1 = a % 6;
+        int x2 = b / 6,y2 = b % 6;
+        return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+    }
+
     public static void main(String[] args) {
         Solutionm1d12 m1d12 = new Solutionm1d12();
         int [][]con1 = new int[][]{{0,1},{0,2},{1,2}};
         int [][]con2 = new int[][]{{0,1},{0,2},{0,3},{1,2},{1,3}};
         System.out.println(m1d12.makeConnected(4,con1));
         System.out.println(m1d12.makeConnected(8,con2));
-
     }
 }
