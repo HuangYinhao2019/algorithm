@@ -2,14 +2,7 @@ package jian;
 import java.util.ArrayList;
 import java.util.List;
 
-class ListNode {
-        int val;
-        ListNode next = null;
 
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
 
 public class printListFromTailToHead {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
@@ -27,6 +20,16 @@ public class printListFromTailToHead {
             return res;
         }
     }
+
+    static class ListNode {
+        int val;
+        ListNode next = null;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
     public static void main(String[] args){
         ListNode l1 = new ListNode(3);
         ListNode l2 = new ListNode(4);
