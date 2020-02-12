@@ -1,4 +1,4 @@
-package leetcode.weeklym1d12;
+package leetcode.weekly.weeklym1d12;
 
 import java.util.Arrays;
 

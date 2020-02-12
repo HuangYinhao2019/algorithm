@@ -1,4 +1,4 @@
-package leetcode.biweeklym1d11;
+package leetcode.biweekly.biweeklym1d11;
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,6 +1,5 @@
-package leetcode.weeklym2d2;
+package leetcode.weekly.weeklym2d2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 

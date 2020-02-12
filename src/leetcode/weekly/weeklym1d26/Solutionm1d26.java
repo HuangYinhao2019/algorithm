@@ -1,4 +1,4 @@
-package leetcode.weeklym1d26;
+package leetcode.weekly.weeklym1d26;
 
 import java.util.ArrayList;
 import java.util.List;
