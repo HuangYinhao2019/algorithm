@@ -207,12 +207,82 @@ public class Problem11to20 {
         }
     }
 
+    public boolean isMatch(String s, String p) {
+        if(s.length() == 0 && p.length() == 0)
+            return true;
+        else {
+            if (s.length() > 0 && p.length() == 0)
+                return false;
+            if (s.length() == 0 && p.length() > 0)
+            {
+                if (p.length() > 1 && p.charAt(1) == '*')
+                    return isMatch(s,p.substring(2));
+                if (p.length() == 1 || (p.length() > 1 && p.charAt(1) != '*'))
+                    return false;
+            }
+            if (!equal(s.charAt(0),p.charAt(0)) && (p.length() < 2 || p.charAt(1) != '*'))
+                return false;
+            else if (equal(s.charAt(0),p.charAt(0)) && (p.length() < 2 || p.charAt(1) != '*'))
+                return isMatch(s.substring(1),p.substring(1));
+            else if (equal(s.charAt(0),p.charAt(0)) && p.length() > 1 && p.charAt(1) == '*')
+                return isMatch(s.substring(1),p) || isMatch(s,p.substring(2));
+            else if (!equal(s.charAt(0),p.charAt(0)) && p.length() > 1 && p.charAt(1) == '*')
+                return isMatch(s,p.substring(2));
+        }
+        return false;
+    }
+
+    private boolean equal(char a, char b){
+        if (a == b || b == '.')
+            return true;
+        else
+            return false;
+    }
+
+    public boolean isNumber(String s) {
+        s = s.trim();
+
+        boolean pointSeen = false;
+        boolean eSeen = false;
+        boolean numberSeen = false;
+        boolean numberAfterE = true;
+        for(int i=0; i<s.length(); i++) {
+            if('0' <= s.charAt(i) && s.charAt(i) <= '9') {
+                numberSeen = true;
+                numberAfterE = true;
+            } else if(s.charAt(i) == '.') {
+                if(eSeen || pointSeen) {
+                    return false;
+                }
+                pointSeen = true;
+            } else if(s.charAt(i) == 'e') {
+                if(eSeen || !numberSeen) {
+                    return false;
+                }
+                numberAfterE = false;
+                eSeen = true;
+            } else if(s.charAt(i) == '-' || s.charAt(i) == '+') {
+                if(i != 0 && s.charAt(i-1) != 'e') {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        return numberSeen && numberAfterE;
+    }
+
     public static void main(String[] args) {
         Problem11to20 p = new Problem11to20();
         char[][] board = new char[][]{{'C','A','A'},{'A','A','A'},{'B','C','D'}};
         String word = "AAB";
         System.out.println(p.exist(board, word));
         System.out.println(p.movingCount(16, 8, 4));
+
+        String s = "a";
+        String q = ".*..a";
+        System.out.println(p.isMatch(s, q));
 
     }
 
