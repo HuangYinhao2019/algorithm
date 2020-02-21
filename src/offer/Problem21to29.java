@@ -2,7 +2,7 @@ package offer;
 
 import java.util.List;
 
-public class Problem21to30 {
+public class Problem21to29 {
 
     static class TreeNode {
         int val;

@@ -1,23 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String s = "()";
-        Stack<Character> t = new Stack<Character>();
-        for(int i = 0;i < s.length();i++){
-            if(t.empty())
-                t.push(s.charAt(i));
-            else if(s.charAt(i) == ')' && t.peek() == '(')
-                t.pop();
-            else if(s.charAt(i) == ']' && t.peek() == '[')
-                t.pop();
-            else if(s.charAt(i) == '}' && t.peek() == '{')
-                t.pop();
-            else
-                t.push(s.charAt(i));
+    static public class A implements Cloneable{
+        int a;
+        public A(int a){
+            this.a = a;
         }
-        System.out.println("a" + 'b');
-
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
+        }
     }
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+        String str1 = new String("ABC") + "ABC";
+        String str2 = "ABC" + "ABC";
+    }
+
 }
