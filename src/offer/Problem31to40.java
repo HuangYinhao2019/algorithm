@@ -1,9 +1,12 @@
 package offer;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Problem31to40 {
     private List<List<Integer>> ans34 = new ArrayList<List<Integer>>();
+    private Map<Node, Node> map35 = new HashMap<Node, Node>();
+    private Set<String> set38 = new HashSet<String>();
 
     static class TreeNode {
         int val;
@@ -169,6 +172,150 @@ public class Problem31to40 {
         if (root.right != null)
             path(l2,root.right,sum-root.val);
     }
+
+    public Node copyRandomList(Node head) {
+        if (head == null) return null;
+        Node p = crl(head);
+        return p;
+    }
+
+    private Node crl(Node head){
+        if (head == null) return null;
+        Node node;
+        if (map35.containsKey(head))
+            node = map35.get(head);
+        else {
+            node = new Node(head.val);
+            map35.put(head,node);
+            node.next = crl(head.next);
+            node.random = crl(head.random);
+        }
+        return node;
+    }
+
+    public String serialize(TreeNode root) {
+        if (root == null) return "null";
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        String ans = new String("");
+        q.offer(root);
+        boolean flag = true;
+        int count = 0;
+        while (!q.isEmpty()){
+            TreeNode t = q.poll();
+            if (t == null){
+                ans += " null";
+            }
+            else {
+                ans += " " + String.valueOf(t.val);
+                q.offer(t.left);
+                q.offer(t.right);
+            }
+        }
+        return ans.substring(1);
+
+    }
+
+    public TreeNode deserialize(String data) {
+        if (data.equals("null") || data.equals("")) return null;
+        String[] str = data.split(" ");
+        int count = 1;
+        TreeNode root = new TreeNode(Integer.valueOf(str[0]));
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        while (count < str.length){
+            TreeNode t = q.poll();
+            if (t != null) {
+                if (!str[count].equals("null")) {
+                    t.left = new TreeNode(Integer.valueOf(str[count++]));
+                    q.offer(t.left);
+                }
+                else{
+                    count++;
+                    q.offer(null);
+                }
+                if (!str[count].equals("null")) {
+                    t.right = new TreeNode(Integer.valueOf(str[count++]));
+                    q.offer(t.right);
+                }
+                else{
+                    count++;
+                    q.offer(null);
+                }
+            }
+        }
+
+        return root;
+    }
+
+    public String[] permutation(String s) {
+        List<Character> c = new ArrayList<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            c.add(s.charAt(i));
+        }
+        p38("",c);
+        String[] ans = new String[set38.size()];
+        int count = 0;
+        for (String str : set38) {
+            ans[count++] = str;
+        }
+        return ans;
+    }
+
+    private void p38(String s, List<Character> c){
+        if (c.size() == 1)
+            set38.add(s + c.get(0));
+        else{
+            for (int i = 0; i < c.size(); i++) {
+                char tmp = c.get(i);
+                c.remove(i);
+                p38(s + tmp, c);
+                c.add(i,tmp);
+            }
+        }
+    }
+
+    public int majorityElement(int[] nums) {
+        int ans = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (count == 0) {
+                ans = nums[i];
+                count++;
+            }
+            else {
+                if (nums[i] == ans)
+                    count++;
+                else count--;
+            }
+        }
+        return ans;
+    }
+
+    public int[] getLeastNumbers(int[] arr, int k) {
+        int[] ans = new int[k];
+        Arrays.sort(arr);
+        for (int i = 0; i < k; i++) {
+            ans[i] = arr[i];
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Problem31to40 p = new Problem31to40();
+        TreeNode t1 = new TreeNode(1);
+        TreeNode t2 = new TreeNode(2);
+        TreeNode t3 = new TreeNode(3);
+        TreeNode t4 = new TreeNode(4);
+        TreeNode t5 = new TreeNode(5);
+        t1.left = t2;
+        t2.left = t3;
+        t3.left = t4;
+        t4.left = t5;
+        System.out.println(p.serialize(t1));
+        p.deserialize(p.serialize(t1));
+        p.permutation("aacd");
+    }
+
 
 
 }

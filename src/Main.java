@@ -16,8 +16,9 @@ public class Main {
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        String str1 = new String("ABC") + "ABC";
-        String str2 = "ABC" + "ABC";
+        String s = "B";
+        String s1 = s + "C";
+
     }
 
 }
