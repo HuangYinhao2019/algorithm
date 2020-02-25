@@ -37,10 +37,10 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] Arr = new int[]{8,7,6,5,4,3,2,1,0};
-        Arr = mergeArr(Arr);
-        for (int i = 0; i < Arr.length; i++) {
-            System.out.println(Arr[i]);
+        int[] arr = new int[]{8,7,6,5,4,3,2,1,0};
+        arr = mergeArr(arr);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
         }
     }
 
