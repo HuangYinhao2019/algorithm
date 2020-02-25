@@ -80,6 +80,63 @@ public class Problem42to50 {
         return dp[s.length()-1];
     }
 
+    public int maxValue(int[][] grid) {
+        int[][] dp = new int[grid.length][grid[0].length];
+        dp[0][0] = grid[0][0];
+        for (int i = 1; i < grid.length; i++)
+            dp[i][0] = dp[i-1][0] + grid[i][0];
+        for (int i = 1; i < grid[0].length; i++)
+            dp[0][i] = dp[0][i-1] + grid[0][i];
+        for (int i = 1; i < grid.length; i++) {
+            for (int j = 1; j < grid[0].length; j++) {
+                dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]) + grid[i][j];
+            }
+        }
+        return dp[grid.length-1][grid[0].length-1];
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+        if (s.length() == 0) return 0;
+        int[] count = new int[256];
+        int i = 0,j = 0;
+        int max = 0;
+        while(j < s.length()){
+            char c = s.charAt(j++);
+            count[c]++;
+            if (count[c] <= 1)
+                max = max > j - i ? max : j - i;
+            while (count[c] > 1){
+                count[s.charAt(i++)]--;
+            }
+        }
+        return max;
+    }
+
+    public int nthUglyNumber(int n) {
+        int[] unly = new int[n];
+        unly[0] = 1;
+        int i = 0,j = 0,k = 0;
+        for (int index = 1; index < n; index++) {
+            int t = Math.min(Math.min(unly[i] * 2,unly[j] * 3),unly[k] * 5);
+            if (t == unly[i] * 2) i++;
+            if (t == unly[j] * 3) j++;
+            if (t == unly[k] * 5) k++;
+            unly[index] = t;
+        }
+        return unly[n-1];
+    }
+
+    public char firstUniqChar(String s) {
+        int[] count = new int[26];
+        for(char c : s.toCharArray()){
+            count[c - 'a']++;
+        }
+        for(char c : s.toCharArray()){
+            if(count[c - 'a'] == 1) return c;
+        }
+        return ' ';
+    }
+
     public static void main(String[] args) {
         Problem42to50 p = new Problem42to50();
         System.out.println(p.findNthDigit(1000000000));
