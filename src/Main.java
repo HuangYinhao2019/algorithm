@@ -18,7 +18,6 @@ public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
         String s = "B";
         String s1 = s + "C";
-
     }
 
 }

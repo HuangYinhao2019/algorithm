@@ -1,7 +1,14 @@
 package offer;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Problem51to60 {
     private int count = 0;
+    private int ans = 0;
+    private boolean ans55 = true;
 
     static class ListNode {
         int val;
@@ -10,6 +17,13 @@ public class Problem51to60 {
         ListNode(int val) {
             this.val = val;
         }
+    }
+
+    static class TreeNode{
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
     }
 
     public int reversePairs(int[] nums) {
@@ -137,6 +151,137 @@ public class Problem51to60 {
         return nums[low] == low ? nums[low]+1 : nums[low]-1;
     }
 
+    public int kthLargest(TreeNode root, int k) {
+        midTree(root,k);
+        return ans;
+    }
+
+    private void midTree(TreeNode root, int k){
+        if (root.right != null)
+            midTree(root.right,k);
+        count++;
+        if (count == k)
+            ans = root.val;
+        if (root.left != null)
+            midTree(root.left,k);
+    }
+
+    public int maxDepth(TreeNode root) {
+        return root == null ? 0 : Math.max(root.left == null ? 0 : maxDepth(root.left),(root.right == null ? 0 : maxDepth(root.right))) + 1;
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) return true;
+        isb(root);
+        return ans55;
+    }
+
+    private int isb(TreeNode root){
+        int left = root.left == null ? 0 : isb(root.left);
+        int right = root.right == null ? 0 : isb(root.right);
+        if (Math.abs(left - right) > 1)
+            ans55 = false;
+        return Math.max(left,right) + 1;
+    }
+
+    public int[] singleNumbers(int[] nums) {
+        int xor = 0;
+        for (int i = 0; i < nums.length; i++)
+            xor ^= nums[i];
+        int k = xor & (-xor);
+        int a = 0, b = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if ((nums[i] & k) == 0)
+                a ^= nums[i];
+            else
+                b ^= nums[i];
+        }
+        return new int[]{a,b};
+    }
+
+    public int singleNumberIII(int[] nums) {
+        int k = 1, c = 0, res = 0;
+        for (int i = 0; i < 32; i++) {
+            c = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if ((nums[j] & k) == k)
+                    c++;
+            }
+            if (c % 3 != 0)
+                res |= k;
+            k <<= 1;
+        }
+        return res;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        Set<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++)
+            set.add(nums[i]);
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(target - nums[i]))
+                return new int[]{nums[i],target-nums[i]};
+        }
+        return new int[]{0,0};
+    }
+
+    public int[][] findContinuousSequence(int target) {
+        List<int[]> list = new ArrayList<>();
+        int sum = 1;
+        int low = 1, high = 1;
+        while (high <= (target / 2) + 1) {
+           if (sum < target)
+               sum += ++high;
+           else if (sum > target)
+               sum -= low++;
+           else{
+               int[] a = new int[high - low + 1];
+               for (int j = low; j <= high; j++)
+                   a[j-low] = j;
+               list.add(a);
+               sum -= low++;
+           }
+        }
+        return list.toArray(new int[list.size()][]);
+    }
+
+    public String reverseWords(String s) {
+        while (s.startsWith(" "))
+            s = s.substring(1);
+        while (s.endsWith(" "))
+            s = s.substring(0,s.length()-1);
+        while (s.contains("  "))
+            s.replaceAll("  ", " ");
+        String[] str = s.split(" ");
+        String ans = "";
+        for (int i = str.length - 1; i >= 0; i--) {
+            ans = ans.concat(str[i]);
+            ans = ans.concat(" ");
+        }
+        return ans.substring(0,ans.length()-1);
+    }
+
+    public String reverseWordsII(String s) {
+        s = s.trim(); //trim去除头尾空格
+        if(s.equals("")) {
+            return "";
+        }
+        String[] sp = s.split(" ");
+        StringBuilder sb = new StringBuilder(); //节省空间？
+        for(int i = sp.length - 1; i >= 0; i--) {
+            sp[i].trim();
+            if(sp[i].equals("")) {
+                continue;
+            }
+            sb.append(sp[i]);
+            sb.append(" ");
+        }
+        return sb.toString().substring(0, sb.length() - 1);
+    }
+
+    public String reverseLeftWords(String s, int n) {
+        return s.substring(n) + s.substring(0,n);
+    }
 
     public static void main(String[] args) {
         Problem51to60 p = new Problem51to60();
