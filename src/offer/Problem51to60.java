@@ -1,9 +1,6 @@
 package offer;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem51to60 {
     private int count = 0;
@@ -281,6 +278,84 @@ public class Problem51to60 {
 
     public String reverseLeftWords(String s, int n) {
         return s.substring(n) + s.substring(0,n);
+    }
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums.length == 0 || k == 0) return new int[0];
+        int[] ans = new int[nums.length - k + 1];
+        int maxindex = -1, max = Integer.MIN_VALUE;
+        for (int i = 0; i < ans.length; i++) {
+            if (maxindex >= i && maxindex < i + k){
+                if (nums[i + k - 1] >= max){
+                    max = nums[i + k - 1];
+                    maxindex = i + k - 1;
+                }
+            }
+            else {
+                max = nums[i];
+                for (int j = i; j < i + k; j++) {
+                    if (max < nums[j]) {
+                        max = nums[j];
+                        maxindex = j;
+                    }
+                }
+            }
+            ans[i] = max;
+        }
+        return ans;
+    }
+
+    static class MaxQueue {
+
+        private Deque<Integer> queue;
+        private Deque<Integer> help;
+
+        public MaxQueue() {
+            queue = new ArrayDeque<>();
+            help = new ArrayDeque<>();
+        }
+
+        public int max_value() {
+            return queue.isEmpty() ? -1 : help.peek();
+        }
+
+        public void push_back(int value) {
+            queue.offer(value);
+            while(!help.isEmpty() && value > help.peekLast()) {
+                help.pollLast();
+            }
+            help.offer(value);
+        }
+
+        public int pop_front() {
+            if(queue.isEmpty()) {
+                return -1;
+            }
+            int val = queue.pop();
+            if(help.peek() == val) {
+                help.pop();
+            }
+            return val;
+        }
+    }
+
+    public double[] twoSum(int n) {
+        int [][]dp = new int[n+1][6*n+1];
+        for(int s=1;s<=6;s++)dp[1][s]=1;
+        for(int i=2;i<=n;i++){
+            for(int s=i;s<=6*i;s++){
+                for(int d=1;d<=6;d++){
+                    if(s-d<i-1)break;
+                    dp[i][s]+=dp[i-1][s-d];
+                }
+            }
+        }
+        double total = Math.pow((double)6,(double)n);
+        double[] ans = new double[5*n+1];
+        for(int i=n;i<=6*n;i++){
+            ans[i-n]=((double)dp[n][i])/total;
+        }
+        return ans;
     }
 
     public static void main(String[] args) {

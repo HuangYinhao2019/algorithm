@@ -18,6 +18,9 @@ public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
         String s = "B";
         String s1 = s + "C";
+        int k = 0;
+        boolean f = (k = 0) > 0;
+        System.out.println(f);
     }
 
 }
