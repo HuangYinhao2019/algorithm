@@ -20,8 +20,6 @@ public class QuickSort {
                 l++;
             while (l < r && arr[r] >= stan)
                 r--;
-            if (l >= r)
-                break;
             int temp = arr[l];
             arr[l] = arr[r];
             arr[r] = temp;
