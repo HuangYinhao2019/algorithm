@@ -120,6 +120,39 @@ public class Problem61to68 {
         return sum;
     }
 
+    public int strToInt(String str) {
+        str = str.trim();
+        int ans = 0;
+        if (str.length() == 0 || (str.charAt(0) > '9' || str.charAt(0) < '0') && str.charAt(0) != '-' && str.charAt(0) != '+')
+            return 0;
+        else if (str.charAt(0) == '-') {
+            int i = 1;
+            while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                if ((long)ans * (-10L) - (long)(str.charAt(i) - '0') < Integer.MIN_VALUE)
+                    return Integer.MIN_VALUE;
+                else {
+                    ans *= 10;
+                    ans += str.charAt(i) - '0';
+                    i++;
+                }
+            }
+            return -ans;
+        }
+        else{
+            int i = str.charAt(0) == '+' ? 1 : 0;
+            while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9'){
+                if ((long)ans * 10L + (long)(str.charAt(i) - '0') > Integer.MAX_VALUE)
+                    return Integer.MAX_VALUE;
+                else {
+                    ans *= 10;
+                    ans += str.charAt(i) - '0';
+                    i++;
+                }
+            }
+            return ans;
+        }
+    }
+
     //二叉搜索树
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if ((root.val <= p.val && root.val >= q.val) || (root.val >= p.val && root.val <= q.val))
