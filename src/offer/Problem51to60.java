@@ -331,6 +331,10 @@ public class Problem51to60 {
             if(queue.isEmpty()) {
                 return -1;
             }
+//          错误写法:   .peek()返回Interger，两个对象用==比较的是地址
+//            if(queue.peek() == help.peek())
+//                help.pollFirst();
+//            return queue.pollFirst();
             int val = queue.pop();
             if(help.peek() == val) {
                 help.pop();
