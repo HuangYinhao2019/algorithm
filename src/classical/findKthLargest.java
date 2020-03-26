@@ -9,14 +9,17 @@ public class findKthLargest {
     private int findKthNum(int[] nums, int left, int right, int k){
         int stan = nums[right];
         int i = left, j = right;
-        if (left == right && left == k)
+        if (left == right && left == k) {
             return nums[left];
+        }
         else {
             while (i < j) {
-                while (i < j && nums[i] >= stan)
+                while (i < j && nums[i] >= stan) {
                     i++;
-                while (i < j && nums[j] <= stan)
+                }
+                while (i < j && nums[j] <= stan){
                     j--;
+                }
                 int temp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = temp;
@@ -24,12 +27,15 @@ public class findKthLargest {
         }
         nums[right] = nums[i];
         nums[i] = stan;
-        if (k < i)
-            return findKthNum(nums,left,i-1,k);
-        else if (k > i)
-            return findKthNum(nums,i+1,right,k);
-        else
+        if (k < i) {
+            return findKthNum(nums, left, i - 1, k);
+        }
+        else if (k > i) {
+            return findKthNum(nums, i + 1, right, k);
+        }
+        else {
             return nums[i];
+        }
     }
 
     public static void main(String[] args) {

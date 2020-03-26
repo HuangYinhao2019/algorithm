@@ -50,6 +50,7 @@ public class ShortestPath {
                 path[i][j] = -1;
             }
         }
+        //k中间，i起点，j终点
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
@@ -65,8 +66,9 @@ public class ShortestPath {
 
     private void findpath(int i, int j){
         int m = path[i][j];
-        if (m == -1)
+        if (m == -1) {
             return;
+        }
         findpath(i,m);
         System.out.println("->" + m);
         findpath(m,j);
