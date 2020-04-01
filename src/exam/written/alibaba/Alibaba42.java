@@ -1,9 +1,39 @@
+package exam.written.alibaba;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Main {
+/**
+ * @author liusandao
+ * @description Alibaba42
+ *              有N只怪兽，每只怪兽有血量a[i]，你有M支箭，每支箭可以造成b[i]点伤害，
+ *              会消耗c[i]点能量。你要用箭杀死某只怪兽，该箭的伤害必须大于等于怪兽的
+ *              血量，打一只怪兽只能用一支箭，每支箭也只能用一次。求，杀死所有怪兽的
+ *              最小能量。如果无法杀死所有怪兽，则输出“NO”
+ *
+ *              第一行T，表示有T组样例
+ *              每组样例第一行N，M
+ *              每组样例第二行N个数，表示N个怪兽的血量
+ *              每组样例第三行M个数，表示每支箭的伤害
+ *              每组样例第四行M个数，表示每支箭的消耗
+ *
+ *              例子
+ *              1
+ *              3 3
+ *              1 2 3
+ *              2 3 4
+ *              1 2 3
+ *
+ *              输出：6
+ *
+ *
+ *
+ * @date 2020-4-1 18:20
+ */
+
+public class Alibaba42 {
 
     public static class Arrow{
         public int damage = 0;
@@ -95,3 +125,4 @@ public class Main {
     }
 
 }
+
