@@ -27,8 +27,9 @@ public class MinHeap {
     }
 
     public int pop(){
-        if (isEmpty())
+        if (isEmpty()) {
             return Integer.MIN_VALUE;
+        }
         int res = arr[0];
         int temp = arr[--count];
         int k = 0;
@@ -36,9 +37,9 @@ public class MinHeap {
             int p = k * 2 + 1 <= count ? arr[k * 2 + 1] : Integer.MAX_VALUE;
             int q = k * 2 + 2 <= count ? arr[k * 2 + 2] : Integer.MAX_VALUE;
             int m = Math.min(p,Math.min(q,temp));
-            if (m == temp)
+            if (m == temp) {
                 break;
-            else if (m == p){
+            } else if (m == p){
                 arr[k] = arr[k * 2 + 1];
                 k = k * 2 + 1;
             }

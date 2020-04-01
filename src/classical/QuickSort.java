@@ -12,14 +12,18 @@ public class QuickSort {
 
     //交换法
     static private int[] quicksortII(int[] arr, int l, int r){
-        if (l >= r) return arr;
+        if (l >= r) {
+            return arr;
+        }
         int right = r, left = l;
         int stan = arr[r];
         while (l < r){
-            while (l < r && arr[l] <= stan)
+            while (l < r && arr[l] <= stan) {
                 l++;
-            while (l < r && arr[r] >= stan)
+            }
+            while (l < r && arr[r] >= stan) {
                 r--;
+            }
             int temp = arr[l];
             arr[l] = arr[r];
             arr[r] = temp;
@@ -39,14 +43,20 @@ public class QuickSort {
             while (i < j)
             {
                 while(i < j && arr[j] >= x) // 从右向左找第一个小于x的数
+                {
                     j--;
-                if(i < j)
+                }
+                if(i < j) {
                     arr[i++] = arr[j];
+                }
 
                 while(i < j && arr[i] < x) // 从左向右找第一个大于等于x的数
+                {
                     i++;
-                if(i < j)
+                }
+                if(i < j) {
                     arr[j--] = arr[i];
+                }
             }
             arr[i] = x;
             quicksort(arr, l, i - 1); // 递归调用
@@ -56,7 +66,9 @@ public class QuickSort {
     }
     //前后指针法，可针对链表
     static private int[] quicksortIII(int arr[], int l, int r){
-        if (l >= r) return arr;
+        if (l >= r) {
+            return arr;
+        }
         int stan = arr[r];
         int cur = l, pre = cur - 1;
         while (cur < r){
