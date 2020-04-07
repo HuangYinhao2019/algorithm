@@ -1,4 +1,4 @@
-package leetcode.dayly;
+package leetcode.dayly3;
 
 import java.util.LinkedList;
 import java.util.Queue;
