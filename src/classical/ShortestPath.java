@@ -13,10 +13,10 @@ public class ShortestPath {
         //OPEN表
         boolean[] visited = new boolean[n];
         //存储路径
-        String[] path = new String[n];
-        for (int i = 0; i < grid.length; i++) {
-            path[i] = new String(index + "->" + i);
-        }
+//        String[] path = new String[n];
+//        for (int i = 0; i < grid.length; i++) {
+//            path[i] = new String(index + "->" + i);
+//        }
 
         visited[index] = true;
         shortest[index] = 0;
@@ -34,7 +34,7 @@ public class ShortestPath {
             for (int j = 0; j < grid.length; j++) {
                 if (!visited[j] && grid[index][p] + grid[p][j] < grid[index][j]) {
                     grid[index][j] = grid[index][p] + grid[p][j];
-                    path[j] = path[p] + "->" + j;
+//                    path[j] = path[p] + "->" + j;
                 }
             }
 
