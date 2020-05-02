@@ -1,4 +1,4 @@
-package leetcode.dayly4;
+package leetcode.daily.daily4;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.common;
 
 public class T299 {
     public String getHint(String secret, String guess) {

@@ -1,10 +1,8 @@
-package leetcode.leetcode2020spring.personal;/**
+package leetcode.special.leetcode2020spring.personal;/**
  * @description T4
  * @author liusandao
  * @date 2020-4-18 14:58
  */
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 /**
  * @program: algorithm
@@ -56,6 +54,10 @@ public class T4 {
 
     public static void main(String[] args) {
         int[] jump = new int[]{2, 6, 1, 1, 1, 1, 4, 1, 1, 1};
+//        int[] copy = Arrays.copyOf(jump, jump.length);
+//        System.out.println(Arrays.equals(jump, copy));
+//        System.out.println(copy == jump);
+//        System.out.println(jump.equals(new int[]{2, 6, 1, 1, 1, 1, 4, 1, 1, 1}));
         System.out.println(new T4().minJump(jump));
     }
 

@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.common;
 
 public class T41 {
     public int firstMissingPositive(int[] nums) {

@@ -1,4 +1,4 @@
-package leetcode.leetcode2020spring.personal;/**
+package leetcode.special.leetcode2020spring.personal;/**
  * @description T2
  * @author liusandao
  * @date 2020-4-18 14:57

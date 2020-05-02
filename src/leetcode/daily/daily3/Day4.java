@@ -1,4 +1,4 @@
-package leetcode.dayly3;
+package leetcode.daily.daily3;
 
 import java.util.HashSet;
 import java.util.LinkedList;

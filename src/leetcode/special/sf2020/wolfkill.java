@@ -1,4 +1,4 @@
-package leetcode.sf2020;
+package leetcode.special.sf2020;
 
 import java.util.HashSet;
 

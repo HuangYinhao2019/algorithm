@@ -1,4 +1,4 @@
-package leetcode.leetcode2020spring.personal;/**
+package leetcode.special.leetcode2020spring.personal;/**
  * @description T3
  * @author liusandao
  * @date 2020-4-18 14:58
@@ -7,7 +7,6 @@ package leetcode.leetcode2020spring.personal;/**
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * @program: algorithm
