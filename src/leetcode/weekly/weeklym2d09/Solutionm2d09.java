@@ -1,8 +1,8 @@
-package leetcode.weekly.weeklym2d9;
+package leetcode.weekly.weeklym2d09;
 
 import java.util.HashMap;
 
-public class Solutionm2d9 {
+public class Solutionm2d09 {
     public boolean checkIfExist(int[] arr) {
         HashMap<Integer,Integer> m = new HashMap<Integer,Integer>();
         for (int i = 0; i < arr.length; i++) {
@@ -35,7 +35,7 @@ public class Solutionm2d9 {
     }
 
     public static void main(String[] args) {
-        Solutionm2d9 s = new Solutionm2d9();
+        Solutionm2d09 s = new Solutionm2d09();
         String a = "friend";
         String t = "family";
         System.out.println(s.minSteps(a, t));

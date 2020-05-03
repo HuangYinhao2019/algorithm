@@ -1,10 +1,9 @@
-package leetcode.weekly.weeklym3d1;
+package leetcode.weekly.weeklym3d01;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Solutionm3d1 {
+public class Solutionm3d01 {
 
     private int[][] dp;
     private int c;
@@ -123,7 +122,7 @@ public class Solutionm3d1 {
     }
     
     public static void main(String[] args) {
-        Solutionm3d1 s = new Solutionm3d1();
+        Solutionm3d01 s = new Solutionm3d01();
         String[] votes = new String[]{"ABC","ACB","ABC","ACB","ACB"};
         int[][] grid = new int[][]{{1,1,3},{3,2,2},{1,1,4}};
         System.out.println(s.minCost(grid));

@@ -1,9 +1,9 @@
-package leetcode.weekly.weeklym2d2;
+package leetcode.weekly.weeklym2d02;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class Solutionm2d2 {
+public class Solutionm2d02 {
 
     static long res = 0;
 
@@ -94,7 +94,7 @@ public class Solutionm2d2 {
     }
 
     public static void main(String[] args) {
-        Solutionm2d2 s = new Solutionm2d2();
+        Solutionm2d02 s = new Solutionm2d02();
         int[] test = new int[]{3,3,3,3,5,5,5,2,2,7};
         System.out.println(s.minSetSize(test));
         TreeNode t1 = new TreeNode(1);
