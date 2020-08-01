@@ -33,9 +33,6 @@ public class T4 {
 
         System.out.println(ans);
 
-
-
-
     }
 
 }
