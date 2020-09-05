@@ -1,10 +1,8 @@
-package leetcode.weekly;/**
+package leetcode.weekly.weeklym7d26;/**
  * @description weeklym7d26
  * @author liusandao
  * @date 2020-7-26 10:29
  */
-
-import sun.reflect.generics.tree.Tree;
 
 import java.util.HashMap;
 import java.util.Iterator;
